@@ -1,0 +1,18 @@
+version: '3'
+services:
+  authservice:
+    build: ./
+    image: nsa/cortesia-1.0.0
+    container_name: api-cortesia-service
+    volumes:
+    - ./logs:/logs
+    - "/etc/localtime:/etc/localtime:ro"
+    ports:
+    - 9014:8081
+    restart: always
+
+#use existing network
+networks:
+  default:
+    external:
+      name: nsa-network
